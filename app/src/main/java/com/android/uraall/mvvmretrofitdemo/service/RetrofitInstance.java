@@ -6,10 +6,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitInstance {
 
     private static Retrofit retrofit = null;
-
     private static String BASE_URL = "https://api.themoviedb.org/3/";
 
-    public static MovieService getService() {
+    public static MovieDbService getService() {
 
         if (retrofit == null) {
 
@@ -21,7 +20,7 @@ public class RetrofitInstance {
 
         }
 
-        return retrofit.create(MovieService.class);
+        return retrofit.create(MovieDbService.class);
 
     }
 

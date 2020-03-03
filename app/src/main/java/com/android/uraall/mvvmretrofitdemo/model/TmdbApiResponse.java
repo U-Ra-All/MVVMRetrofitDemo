@@ -8,46 +8,46 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ApiResponse implements Parcelable
+public class TmdbApiResponse implements Parcelable
 {
 
     @SerializedName("page")
     @Expose
     private Integer page;
-    @SerializedName("total_Movies")
+    @SerializedName("total_results")
     @Expose
     private Integer totalMovies;
     @SerializedName("total_pages")
     @Expose
     private Integer totalPages;
-    @SerializedName("Movies")
+    @SerializedName("results")
     @Expose
     private List<Movie> Movies = null;
-    public final static Parcelable.Creator<ApiResponse> CREATOR = new Creator<ApiResponse>() {
+    public final static Parcelable.Creator<TmdbApiResponse> CREATOR = new Creator<TmdbApiResponse>() {
 
 
         @SuppressWarnings({
                 "unchecked"
         })
-        public ApiResponse createFromParcel(Parcel in) {
-            return new ApiResponse(in);
+        public TmdbApiResponse createFromParcel(Parcel in) {
+            return new TmdbApiResponse(in);
         }
 
-        public ApiResponse[] newArray(int size) {
-            return (new ApiResponse[size]);
+        public TmdbApiResponse[] newArray(int size) {
+            return (new TmdbApiResponse[size]);
         }
 
     }
             ;
 
-    protected ApiResponse(Parcel in) {
+    protected TmdbApiResponse(Parcel in) {
         this.page = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.totalMovies = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.totalPages = ((Integer) in.readValue((Integer.class.getClassLoader())));
         in.readList(this.Movies, (com.android.uraall.mvvmretrofitdemo.model.Movie.class.getClassLoader()));
     }
 
-    public ApiResponse() {
+    public TmdbApiResponse() {
     }
 
     public Integer getPage() {
