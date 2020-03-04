@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie implements Parcelable
+public class Result implements Parcelable
 {
 
     @SerializedName("popularity")
@@ -41,37 +41,37 @@ public class Movie implements Parcelable
     private String originalTitle;
     @SerializedName("genre_ids")
     @Expose
-    private List<Integer> genreIds = new ArrayList<>();
+    private List<Integer> genreIds = new ArrayList<Integer>();
     @SerializedName("title")
     @Expose
     private String title;
     @SerializedName("vote_average")
     @Expose
-    private Integer voteAverage;
+    private Double voteAverage;
     @SerializedName("overview")
     @Expose
     private String overview;
     @SerializedName("release_date")
     @Expose
     private String releaseDate;
-    public final static Parcelable.Creator<Movie> CREATOR = new Creator<Movie>() {
+    public final static Parcelable.Creator<Result> CREATOR = new Creator<Result>() {
 
 
         @SuppressWarnings({
                 "unchecked"
         })
-        public Movie createFromParcel(Parcel in) {
-            return new Movie(in);
+        public Result createFromParcel(Parcel in) {
+            return new Result(in);
         }
 
-        public Movie[] newArray(int size) {
-            return (new Movie[size]);
+        public Result[] newArray(int size) {
+            return (new Result[size]);
         }
 
     }
             ;
 
-    protected Movie(Parcel in) {
+    protected Result(Parcel in) {
         this.popularity = ((Double) in.readValue((Double.class.getClassLoader())));
         this.voteCount = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.video = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
@@ -83,12 +83,12 @@ public class Movie implements Parcelable
         this.originalTitle = ((String) in.readValue((String.class.getClassLoader())));
         in.readList(this.genreIds, (java.lang.Integer.class.getClassLoader()));
         this.title = ((String) in.readValue((String.class.getClassLoader())));
-        this.voteAverage = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.voteAverage = ((Double) in.readValue((Double.class.getClassLoader())));
         this.overview = ((String) in.readValue((String.class.getClassLoader())));
         this.releaseDate = ((String) in.readValue((String.class.getClassLoader())));
     }
 
-    public Movie() {
+    public Result() {
     }
 
     public Double getPopularity() {
@@ -179,11 +179,11 @@ public class Movie implements Parcelable
         this.title = title;
     }
 
-    public Integer getVoteAverage() {
+    public Double getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(Integer voteAverage) {
+    public void setVoteAverage(Double voteAverage) {
         this.voteAverage = voteAverage;
     }
 

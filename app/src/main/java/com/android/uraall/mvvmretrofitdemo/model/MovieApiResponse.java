@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class TmdbApiResponse implements Parcelable
+public class MovieApiResponse implements Parcelable
 {
 
     @SerializedName("page")
@@ -16,38 +16,38 @@ public class TmdbApiResponse implements Parcelable
     private Integer page;
     @SerializedName("total_results")
     @Expose
-    private Integer totalMovies;
+    private Integer totalResults;
     @SerializedName("total_pages")
     @Expose
     private Integer totalPages;
     @SerializedName("results")
     @Expose
-    private List<Movie> Movies = null;
-    public final static Parcelable.Creator<TmdbApiResponse> CREATOR = new Creator<TmdbApiResponse>() {
+    private List<Result> results = null;
+    public final static Parcelable.Creator<MovieApiResponse> CREATOR = new Creator<MovieApiResponse>() {
 
 
         @SuppressWarnings({
                 "unchecked"
         })
-        public TmdbApiResponse createFromParcel(Parcel in) {
-            return new TmdbApiResponse(in);
+        public MovieApiResponse createFromParcel(Parcel in) {
+            return new MovieApiResponse(in);
         }
 
-        public TmdbApiResponse[] newArray(int size) {
-            return (new TmdbApiResponse[size]);
+        public MovieApiResponse[] newArray(int size) {
+            return (new MovieApiResponse[size]);
         }
 
     }
             ;
 
-    protected TmdbApiResponse(Parcel in) {
+    protected MovieApiResponse(Parcel in) {
         this.page = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        this.totalMovies = ((Integer) in.readValue((Integer.class.getClassLoader())));
+        this.totalResults = ((Integer) in.readValue((Integer.class.getClassLoader())));
         this.totalPages = ((Integer) in.readValue((Integer.class.getClassLoader())));
-        in.readList(this.Movies, (com.android.uraall.mvvmretrofitdemo.model.Movie.class.getClassLoader()));
+        in.readList(this.results, (com.android.uraall.mvvmretrofitdemo.model.Result.class.getClassLoader()));
     }
 
-    public TmdbApiResponse() {
+    public MovieApiResponse() {
     }
 
     public Integer getPage() {
@@ -58,12 +58,12 @@ public class TmdbApiResponse implements Parcelable
         this.page = page;
     }
 
-    public Integer getTotalMovies() {
-        return totalMovies;
+    public Integer getTotalResults() {
+        return totalResults;
     }
 
-    public void setTotalMovies(Integer totalMovies) {
-        this.totalMovies = totalMovies;
+    public void setTotalResults(Integer totalResults) {
+        this.totalResults = totalResults;
     }
 
     public Integer getTotalPages() {
@@ -74,19 +74,19 @@ public class TmdbApiResponse implements Parcelable
         this.totalPages = totalPages;
     }
 
-    public List<Movie> getMovies() {
-        return Movies;
+    public List<Result> getResults() {
+        return results;
     }
 
-    public void setMovies(List<Movie> Movies) {
-        this.Movies = Movies;
+    public void setResults(List<Result> results) {
+        this.results = results;
     }
 
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(page);
-        dest.writeValue(totalMovies);
+        dest.writeValue(totalResults);
         dest.writeValue(totalPages);
-        dest.writeList(Movies);
+        dest.writeList(results);
     }
 
     public int describeContents() {

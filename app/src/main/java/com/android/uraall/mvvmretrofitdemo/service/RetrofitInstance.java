@@ -8,7 +8,7 @@ public class RetrofitInstance {
     private static Retrofit retrofit = null;
     private static String BASE_URL = "https://api.themoviedb.org/3/";
 
-    public static MovieDbService getService() {
+    public static MovieApiService getService() {
 
         if (retrofit == null) {
 
@@ -20,7 +20,7 @@ public class RetrofitInstance {
 
         }
 
-        return retrofit.create(MovieDbService.class);
+        return retrofit.create(MovieApiService.class);
 
     }
 
