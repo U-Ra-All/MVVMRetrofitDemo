@@ -47,6 +47,7 @@ public class ResultAdapter
                 results.get(position).getPosterPath();
         Glide.with(context)
                 .load(imagePath)
+                .placeholder(R.drawable.progress_circle)
                 .into(holder.movieImageView);
 
     }
