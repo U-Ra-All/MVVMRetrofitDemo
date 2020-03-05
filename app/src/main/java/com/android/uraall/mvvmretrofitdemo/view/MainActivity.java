@@ -1,4 +1,4 @@
-package com.android.uraall.mvvmretrofitdemo;
+package com.android.uraall.mvvmretrofitdemo.view;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.android.uraall.mvvmretrofitdemo.R;
 import com.android.uraall.mvvmretrofitdemo.adapter.ResultAdapter;
 import com.android.uraall.mvvmretrofitdemo.model.MovieApiResponse;
 import com.android.uraall.mvvmretrofitdemo.model.Result;
