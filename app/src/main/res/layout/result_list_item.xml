@@ -1,44 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="4dp"
-    card_view:cardUseCompatPadding="true">
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        
+        <variable
+            name="result"
+            type="com.android.uraall.mvvmretrofitdemo.model.Result" />
+        
+    </data>
 
-    <RelativeLayout
-        android:layout_margin="4dp"
-        android:padding="8dp"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="4dp"
+        card_view:cardUseCompatPadding="true">
 
-        <ImageView
-            android:id="@+id/movieImageView"
-            android:scaleType="fitXY"
+        <RelativeLayout
+            android:layout_margin="4dp"
+            android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_below="@+id/movieImageView"
-            android:layout_marginTop="8dp"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/movieImageView"
+                android:scaleType="fitXY"
+                bind:posterPath="@{result.posterPath}"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
 
-        <TextView
-            android:id="@+id/popularityTextView"
-            android:layout_below="@+id/titleTextView"
-            android:layout_marginTop="8dp"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_below="@+id/movieImageView"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="@{result.originalTitle}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/popularityTextView"
+                android:layout_below="@+id/titleTextView"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:text="@{Double.toString(result.popularity)}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+
+</layout>

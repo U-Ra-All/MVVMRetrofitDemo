@@ -3,6 +3,7 @@ package com.android.uraall.mvvmretrofitdemo.view;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -12,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.uraall.mvvmretrofitdemo.R;
 import com.android.uraall.mvvmretrofitdemo.adapter.ResultAdapter;
+import com.android.uraall.mvvmretrofitdemo.databinding.ActivityMainBinding;
 import com.android.uraall.mvvmretrofitdemo.model.MovieApiResponse;
 import com.android.uraall.mvvmretrofitdemo.model.Result;
 import com.android.uraall.mvvmretrofitdemo.service.MovieApiService;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private ResultAdapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private MainActivityViewModel mainActivityViewModel;
+    private ActivityMainBinding activityMainBinding;
 
 
     @Override
@@ -39,13 +42,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        activityMainBinding = DataBindingUtil.setContentView(this,
+                R.layout.activity_main);
+
         mainActivityViewModel = new ViewModelProvider
                 .AndroidViewModelFactory(getApplication())
                 .create(MainActivityViewModel.class);
 
         getPopularMovies();
 
-        swipeRefreshLayout = findViewById(R.id.swiperefresh);
+        swipeRefreshLayout = activityMainBinding.swiperefresh;
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setOnRefreshListener(
                 new SwipeRefreshLayout.OnRefreshListener() {
@@ -73,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void fillRecyclerView() {
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = activityMainBinding.recyclerView;
         adapter = new ResultAdapter(this, results);
 
         if (getResources().getConfiguration().orientation ==
