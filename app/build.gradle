@@ -54,4 +54,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
     // Annotation processor
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    def paging_version = "2.1.1"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
 }
